@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OAuth2 LangGraph Agent Portal</title>
+    <style>
+        * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: #f0f2f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px; }
+        .container { background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 100%; max-width: 800px; }
+        h2 { margin-top: 0; color: #1a1a1a; }
+        .forms-wrapper { display: flex; gap: 30px; margin-top: 20px; }
+        .form-box { flex: 1; background: #fafafa; padding: 20px; border-radius: 6px; border: 1px solid #e0e0e0; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; color: #555; font-weight: bold; }
+        input[type="text"], input[type="password"], textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; }
+        button { width: 100%; padding: 10px; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; margin-top: 5px; font-weight: bold; }
+        .btn-register { background: #28a745; }
+        .btn-login { background: #007bff; }
+        .message { margin-top: 15px; padding: 10px; border-radius: 4px; display: none; }
+        .error { background: #fed7d7; color: #9b2c2c; }
+        .success { background: #c6f6d5; color: #22543d; }
+        #agent-section { display: none; }
+        #agent-output { background: #f7fafc; border: 1px solid #e2e8f0; padding: 15px; border-radius: 4px; min-height: 100px; margin-top: 10px; white-space: pre-wrap; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div id="status-msg" class="message"></div>
+
+    <div id="auth-section">
+        <h2>OAuth2 Enterprise Portal</h2>
+        <div class="forms-wrapper">
+            
+            <div class="form-box">
+                <h2>Register</h2>
+                <form id="register-form">
+                    <div class="form-group">
+                        <label for="reg-username">Username</label>
+                        <input type="text" id="reg-username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-password">Password</label>
+                        <input type="password" id="reg-password" required>
+                    </div>
+                    <button type="submit" class="btn-register">Register</button>
+                </form>
+            </div>
+
+            <div class="form-box">
+                <h2>OAuth2 Login</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="login-username">Username</label>
+                        <input type="text" id="login-username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" required>
+                    </div>
+                    <button type="submit" class="btn-login">Login (/token)</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="agent-section">
+        <h2>Welcome, <span id="user-display"></span></h2>
+        <p>Authenticated Session | LangGraph Agent with Tool Execution</p>
+        <div class="form-group">
+            <textarea id="prompt-input" rows="3" placeholder="Ask: 'What is the current time?'"></textarea>
+        </div>
+        <button id="send-prompt-btn" class="btn-login">Ask Agent</button>
+        <button id="logout-btn" style="background: #dc3545; margin-top: 10px;">Logout</button>
+        <h3>Agent Output:</h3>
+        <div id="agent-output">Awaiting query...</div>
+    </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
