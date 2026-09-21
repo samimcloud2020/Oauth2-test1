@@ -1,0 +1,10 @@
+fastapi>=0.110.0
+uvicorn>=0.28.0
+python-dotenv>=1.0.1
+openai>=1.14.0
+pwdlib[bcrypt]>=0.2.0
+pyjwt>=2.8.0
+python-multipart>=0.0.9
+langchain>=0.3.0
+langchain-openai>=0.2.0
+langgraph>=0.2.0
