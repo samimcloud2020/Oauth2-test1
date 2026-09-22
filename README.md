@@ -1,17 +1,4 @@
-[ User Interface ]               [ Client (app.js) ]                [ OAuth2 Server ]
-         │                                │                                  │
-         │── 1. Clicks "Login" ──────────>│                                  │
-         │                                │── 2. POST /token (Form-data) ───>│
-         │<── 3. UI Updates (Show App) ───│<── Returns access/refresh tokens─│
-         │                                │                                  │
-         │── 4. Sends Prompt/Query ──────>│                                  │
-         │                                │── 5. POST /api/agent ───────────>│
-         │                                │      (Authorization: Bearer)     │
-         │                                │                                  │
-         │ (If Token Expired 401)         │                                  │
-         │                                │── 6. POST /refresh ─────────────>│
-         │                                │<── Returns new token pair ───────│
-         │                                │── 7. Retries original request ──>│
+
 
 ******************************************************************************************************************
 [ User Interface ]     [ Browser (app.js) ]       [ localStorage ]          [ OAuth2 Server (FastAPI) ]
