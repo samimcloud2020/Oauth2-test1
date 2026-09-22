@@ -1,6 +1,7 @@
 
 *****************************************************************************************************
-Here is the updated diagram and breakdown showing exactly where the **Browser** and **`localStorage`** fit into this architecture, along with what constitutes the **OAuth2 Server**.
+Here is the updated diagram and breakdown showing exactly where the **Browser** and **`localStorage`** fit into this architecture, 
+along with what constitutes the **OAuth2 Server**.
 
 ---
 
@@ -37,7 +38,9 @@ Here is the updated diagram and breakdown showing exactly where the **Browser** 
 
 ### 1. Where is the Browser located?
 
-The **Browser** acts as the client host environment running the JavaScript code (`app.js`). It manages DOM interactions (rendering forms, updating chat messages), captures UI user events, executes network calls (`fetch`), and manages key-value data storage via its internal web APIs.
+The **Browser** acts as the client host environment running the JavaScript code (`app.js`).
+It manages DOM interactions (rendering forms, updating chat messages), captures UI user events,
+executes network calls (`fetch`), and manages key-value data storage via its internal web APIs.
 
 ---
 
@@ -48,8 +51,10 @@ The **Browser** acts as the client host environment running the JavaScript code 
 * **Access:** `app.js` accesses it using `window.localStorage`.
 * **Persistence:** Data stored here persists even when the browser tab or window is closed or refreshed.
 * **Role in this Flow:**
-* **Read Operations:** Used before sending API requests to retrieve the current `access_token` for the `Authorization: Bearer <token>` header, or the `refresh_token` during a token renewal.
-* **Write Operations:** Used immediately after receiving responses from `/token` or `/refresh` to save `access_token` and `refresh_token`.
+* **Read Operations:** Used before sending API requests to retrieve the current `access_token`
+for the `Authorization: Bearer <token>` header, or the `refresh_token` during a token renewal.
+* **Write Operations:** Used immediately after receiving responses from `/token` or `/refresh`
+to save `access_token` and `refresh_token`.
 
 
 
