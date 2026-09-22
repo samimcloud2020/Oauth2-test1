@@ -34,40 +34,6 @@ Here is the updated diagram and breakdown showing exactly where the **Browser** 
         │                       │── 13. Retry /api/agent ───────────────────────────────>│
 
 *******************************************************************************************
-Here is the updated diagram and breakdown showing exactly where the **Browser** and **`localStorage`** fit into this architecture, along with what constitutes the **OAuth2 Server**.
-
----
-
-### Updated Sequence Diagram
-
-```text
-[ User Interface ]     [ Browser (app.js) ]       [ localStorage ]          [ OAuth2 Server (FastAPI) ]
-        │                       │                        │                               │
-        │── 1. Clicks "Login" ─>│                        │                               │
-        │                       │── 2. POST /token ─────────────────────────────────────>│
-        │                       │<── 3. Returns {access_token, refresh_token} ───────────│
-        │                       │                        │                               │
-        │                       │── 4. Set tokens ──────>│                               │
-        │                       │   (Save to storage)    │                               │
-        │<── 5. Show Main UI ───│                        │                               │
-        │                       │                        │                               │
-        │── 6. Sends Prompt ───>│                        │                               │
-        │                       │── 7. Read access_token>│                               │
-        │                       │<── Returns Token ──────│                               │
-        │                       │                        │                               │
-        │                       │── 8. POST /api/agent (Authorization: Bearer <token>) ─>│
-        │                       │                        │                               │
-        │  (If 401 Unauthorized)│                        │                               │
-        │                       │── 9. Read refresh_token>                               │
-        │                       │<── Returns Token ──────│                               │
-        │                       │                        │                               │
-        │                       │── 10. POST /refresh ──────────────────────────────────>│
-        │                       │<── 11. Returns new token pair ─────────────────────────│
-        │                       │                        │                               │
-        │                       │── 12. Overwrite tokens>│                               │
-        │                       │── 13. Retry /api/agent ───────────────────────────────>│
-
-
 
 ### 1. Where is the Browser located?
 
