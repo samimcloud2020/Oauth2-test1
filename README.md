@@ -1,4 +1,11 @@
+Scopes are OPTIONAL in OAuth 2.0
+Under the OAuth 2.0 specification (RFC 6749 Section 3.3), scopes are optional:
 
+"If the client omits the scope parameter when requesting authorization, the authorization server 
+MAY issue an access token with a default scope or omit the scope entirely."
+
+If your application only has one permission level (e.g., any logged-in user can access /api/agent), 
+you don't need distinct scope strings like read:agent. The presence of a valid access_token itself implies full authorization.
 *****************************************************************************************************
 Here is the updated diagram and breakdown showing exactly where the **Browser** and **`localStorage`** fit into this architecture, 
 along with what constitutes the **OAuth2 Server**.
